@@ -55,10 +55,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 sealed class BottomBarRoute(val route: String, val title: String, val icon: ImageVector) {
-    object MemberAWorkspace : BottomBarRoute("member_a_room", "Membro A - Room", Icons.Default.FitnessCenter)
-    object MemberAApi : BottomBarRoute("member_a_api", "Membro A - API", Icons.Default.Api)
-    object MemberBWorkspace : BottomBarRoute("member_b_room", "Membro B - Room", Icons.Default.Fastfood)
-    object MemberBApi : BottomBarRoute("member_b_api", "Membro B - API", Icons.Default.List)
+    object MemberAWorkspace : BottomBarRoute("member_a_room", "Luiz Edson - Room", Icons.Default.FitnessCenter)
+    object MemberAApi : BottomBarRoute("member_a_api", "Luiz Edson - API", Icons.Default.Api)
+    object MemberBWorkspace : BottomBarRoute("member_b_room", "Hélder Vinícius - Room", Icons.Default.Fastfood)
+    object MemberBApi : BottomBarRoute("member_b_api", "Hélder Vinícius - API", Icons.Default.List)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -145,7 +145,7 @@ fun MemberAWorkspaceScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro A — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Luiz Edson — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(workouts) { workout ->
@@ -184,7 +184,7 @@ fun MemberAApiScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro A — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Luiz Edson — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(todos) { item ->
@@ -235,7 +235,7 @@ fun MemberBWorkspaceScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro B — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Hélder Vinícius — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(meals) { meal ->
@@ -274,7 +274,7 @@ fun MemberBApiScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro B — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Hélder Vinícius — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(posts) { item ->

@@ -55,17 +55,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 sealed class BottomBarRoute(val route: String, val title: String, val icon: ImageVector) {
-<<<<<<< HEAD
     object LuizEdsonWorkspace : BottomBarRoute("luiz_edson_room", "Luiz Edson - Room", Icons.Default.FitnessCenter)
     object LuizEdsonApi : BottomBarRoute("luiz_edson_api", "Luiz Edson - API", Icons.Default.Api)
     object HolderViniciusWorkspace : BottomBarRoute("helder_vinicius_room", "Hélder Vinícius - Room", Icons.Default.Fastfood)
     object HolderViniciusApi : BottomBarRoute("helder_vinicius_api", "Hélder Vinícius - API", Icons.Default.List)
-=======
-    object MemberAWorkspace : BottomBarRoute("member_a_room", "Membro A - Room", Icons.Default.FitnessCenter)
-    object MemberAApi : BottomBarRoute("member_a_api", "Membro A - API", Icons.Default.Api)
-    object MemberBWorkspace : BottomBarRoute("member_b_room", "Membro B - Room", Icons.Default.Fastfood)
-    object MemberBApi : BottomBarRoute("member_b_api", "Membro B - API", Icons.Default.List)
->>>>>>> parent of 5e8e9c3 (edit names)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -152,7 +145,7 @@ fun LuizEdsonWorkspaceScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro A — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Luiz Edson — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(workouts) { workout ->
@@ -198,7 +191,7 @@ fun LuizEdsonApiScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro A — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Luiz Edson — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
 
         if (errorMessage != null) {
@@ -264,7 +257,7 @@ fun HolderViniciusWorkspaceScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro B — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Hélder Vinícius — dados locais com Room", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(meals) { meal ->
@@ -310,7 +303,7 @@ fun HolderViniciusApiScreen() {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Membro B — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+        Text("Hélder Vinícius — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
 
         if (errorMessage != null) {

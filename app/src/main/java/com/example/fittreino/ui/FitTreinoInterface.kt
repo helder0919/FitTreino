@@ -55,16 +55,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 sealed class BottomBarRoute(val route: String, val title: String, val icon: ImageVector) {
-    object MemberAWorkspace : BottomBarRoute("member_a_room", "Luiz Edson - Room", Icons.Default.FitnessCenter)
-    object MemberAApi : BottomBarRoute("member_a_api", "Luiz Edson - API", Icons.Default.Api)
-    object MemberBWorkspace : BottomBarRoute("member_b_room", "Hélder Vinícius - Room", Icons.Default.Fastfood)
-    object MemberBApi : BottomBarRoute("member_b_api", "Hélder Vinícius - API", Icons.Default.List)
+    object LuizEdsonWorkspace : BottomBarRoute("luiz_edson_room", "Luiz Edson - Room", Icons.Default.FitnessCenter)
+    object LuizEdsonApi : BottomBarRoute("luiz_edson_api", "Luiz Edson - API", Icons.Default.Api)
+    object HolderViniciusWorkspace : BottomBarRoute("helder_vinicius_room", "Hélder Vinícius - Room", Icons.Default.Fastfood)
+    object HolderViniciusApi : BottomBarRoute("helder_vinicius_api", "Hélder Vinícius - API", Icons.Default.List)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FitTreinoMainApp() {
-    var currentRoute by remember { mutableStateOf<BottomBarRoute>(BottomBarRoute.MemberAWorkspace) }
+    var currentRoute by remember { mutableStateOf<BottomBarRoute>(BottomBarRoute.LuizEdsonWorkspace) }
 
     Scaffold(
         topBar = {
@@ -85,10 +85,10 @@ fun FitTreinoMainApp() {
         bottomBar = {
             NavigationBar {
                 val items = listOf(
-                    BottomBarRoute.MemberAWorkspace,
-                    BottomBarRoute.MemberAApi,
-                    BottomBarRoute.MemberBWorkspace,
-                    BottomBarRoute.MemberBApi
+                    BottomBarRoute.LuizEdsonWorkspace,
+                    BottomBarRoute.LuizEdsonApi,
+                    BottomBarRoute.HolderViniciusWorkspace,
+                    BottomBarRoute.HolderViniciusApi
                 )
 
                 items.forEach { item ->
@@ -104,17 +104,17 @@ fun FitTreinoMainApp() {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (currentRoute) {
-                is BottomBarRoute.MemberAWorkspace -> MemberAWorkspaceScreen()
-                is BottomBarRoute.MemberAApi -> MemberAApiScreen()
-                is BottomBarRoute.MemberBWorkspace -> MemberBWorkspaceScreen()
-                is BottomBarRoute.MemberBApi -> MemberBApiScreen()
+                is BottomBarRoute.LuizEdsonWorkspace -> LuizEdsonWorkspaceScreen()
+                is BottomBarRoute.LuizEdsonApi -> LuizEdsonApiScreen()
+                is BottomBarRoute.HolderViniciusWorkspace -> HolderViniciusWorkspaceScreen()
+                is BottomBarRoute.HolderViniciusApi -> HolderViniciusApiScreen()
             }
         }
     }
 }
 
 @Composable
-fun MemberAWorkspaceScreen() {
+fun LuizEdsonWorkspaceScreen() {
     val context = LocalContext.current.applicationContext
     val db = remember { FitTreinoDatabase.getInstance(context) }
     var workouts by remember { mutableStateOf<List<MemberAWorkoutEntity>>(emptyList()) }
@@ -165,7 +165,7 @@ fun MemberAWorkspaceScreen() {
 }
 
 @Composable
-fun MemberAApiScreen() {
+fun LuizEdsonApiScreen() {
     var todos by remember { mutableStateOf<List<MemberATodoResponse>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
 
@@ -204,7 +204,7 @@ fun MemberAApiScreen() {
 }
 
 @Composable
-fun MemberBWorkspaceScreen() {
+fun HolderViniciusWorkspaceScreen() {
     val context = LocalContext.current.applicationContext
     val db = remember { FitTreinoDatabase.getInstance(context) }
     var meals by remember { mutableStateOf<List<MemberBMealEntity>>(emptyList()) }
@@ -255,7 +255,7 @@ fun MemberBWorkspaceScreen() {
 }
 
 @Composable
-fun MemberBApiScreen() {
+fun HolderViniciusApiScreen() {
     var posts by remember { mutableStateOf<List<MemberBPostResponse>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
 

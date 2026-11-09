@@ -168,12 +168,19 @@ fun LuizEdsonWorkspaceScreen() {
 fun LuizEdsonApiScreen() {
     var todos by remember { mutableStateOf<List<LuizEdsonTodoResponse>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
-        withContext(Dispatchers.IO) {
-            todos = RetrofitClient.service.getLuizEdsonTodos().take(5)
+        try {
+            val result = withContext(Dispatchers.IO) {
+                RetrofitClient.service.getLuizEdsonTodos()
+            }
+            todos = result.take(5)
+        } catch (e: Exception) {
+            errorMessage = "Não foi possível carregar os dados da API. Verifique a conexão e tente novamente."
+        } finally {
+            loading = false
         }
-        loading = false
     }
 
     if (loading) {
@@ -186,6 +193,21 @@ fun LuizEdsonApiScreen() {
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text("Luiz Edson — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
+
+        if (errorMessage != null) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(
+                    text = errorMessage!!,
+                    modifier = Modifier.padding(16.dp),
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+            return
+        }
+
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(todos) { item ->
                 Card(
@@ -258,12 +280,19 @@ fun HolderViniciusWorkspaceScreen() {
 fun HolderViniciusApiScreen() {
     var posts by remember { mutableStateOf<List<HelderViniciusPostResponse>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
-        withContext(Dispatchers.IO) {
-            posts = RetrofitClient.service.getHelderViniciusPosts().take(5)
+        try {
+            val result = withContext(Dispatchers.IO) {
+                RetrofitClient.service.getHelderViniciusPosts()
+            }
+            posts = result.take(5)
+        } catch (e: Exception) {
+            errorMessage = "Não foi possível carregar os dados da API. Verifique a conexão e tente novamente."
+        } finally {
+            loading = false
         }
-        loading = false
     }
 
     if (loading) {
@@ -276,6 +305,21 @@ fun HolderViniciusApiScreen() {
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text("Hélder Vinícius — API externa via Retrofit", fontSize = 18.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(12.dp))
+
+        if (errorMessage != null) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Text(
+                    text = errorMessage!!,
+                    modifier = Modifier.padding(16.dp),
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+            return
+        }
+
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             items(posts) { item ->
                 Card(

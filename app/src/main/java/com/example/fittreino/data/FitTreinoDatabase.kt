@@ -54,7 +54,7 @@ interface HelderViniciusMealDao {
 
 @Database(
     entities = [LuizEdsonWorkoutEntity::class, HelderViniciusMealEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class FitTreinoDatabase : RoomDatabase() {

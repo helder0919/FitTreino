@@ -72,7 +72,7 @@ abstract class FitTreinoDatabase : RoomDatabase() {
                     FitTreinoDatabase::class.java,
                     "fit_treino_db"
                 )
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration(true)
                     .build()
                 INSTANCE = instance
                 instance

@@ -7,20 +7,20 @@ import retrofit2.http.GET
 
 interface FitTreinoApiService {
     @GET("todos")
-    suspend fun getMemberATodos(): List<MemberATodoResponse>
+    suspend fun getLuizEdsonTodos(): List<LuizEdsonTodoResponse>
 
     @GET("posts")
-    suspend fun getMemberBPosts(): List<MemberBPostResponse>
+    suspend fun getHelderViniciusPosts(): List<HelderViniciusPostResponse>
 }
 
-data class MemberATodoResponse(
+data class LuizEdsonTodoResponse(
     val userId: Int,
     val id: Int,
     val title: String,
     val completed: Boolean
 )
 
-data class MemberBPostResponse(
+data class HelderViniciusPostResponse(
     val userId: Int,
     val id: Int,
     val title: String,

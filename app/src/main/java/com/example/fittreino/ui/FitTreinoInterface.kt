@@ -46,10 +46,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fittreino.data.FitTreinoDatabase
-import com.example.fittreino.data.MemberAWorkoutEntity
-import com.example.fittreino.data.MemberBMealEntity
-import com.example.fittreino.data.api.MemberATodoResponse
-import com.example.fittreino.data.api.MemberBPostResponse
+import com.example.fittreino.data.LuizEdsonWorkoutEntity
+import com.example.fittreino.data.HelderViniciusMealEntity
+import com.example.fittreino.data.api.LuizEdsonTodoResponse
+import com.example.fittreino.data.api.HelderViniciusPostResponse
 import com.example.fittreino.data.api.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -117,18 +117,18 @@ fun FitTreinoMainApp() {
 fun LuizEdsonWorkspaceScreen() {
     val context = LocalContext.current.applicationContext
     val db = remember { FitTreinoDatabase.getInstance(context) }
-    var workouts by remember { mutableStateOf<List<MemberAWorkoutEntity>>(emptyList()) }
+    var workouts by remember { mutableStateOf<List<LuizEdsonWorkoutEntity>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
-            val dao = db.memberAWorkoutDao()
+            val dao = db.luizEdsonWorkoutDao()
             if (dao.count() == 0) {
                 dao.insertAll(
                     listOf(
-                        MemberAWorkoutEntity(name = "Supino Ajustado", muscleGroup = "Peito", duration = "35 min"),
-                        MemberAWorkoutEntity(name = "Remada Curvada", muscleGroup = "Costas", duration = "30 min"),
-                        MemberAWorkoutEntity(name = "Agachamento Livre", muscleGroup = "Pernas", duration = "40 min")
+                        LuizEdsonWorkoutEntity(name = "Supino Ajustado", muscleGroup = "Peito", duration = "35 min"),
+                        LuizEdsonWorkoutEntity(name = "Remada Curvada", muscleGroup = "Costas", duration = "30 min"),
+                        LuizEdsonWorkoutEntity(name = "Agachamento Livre", muscleGroup = "Pernas", duration = "40 min")
                     )
                 )
             }
@@ -166,12 +166,12 @@ fun LuizEdsonWorkspaceScreen() {
 
 @Composable
 fun LuizEdsonApiScreen() {
-    var todos by remember { mutableStateOf<List<MemberATodoResponse>>(emptyList()) }
+    var todos by remember { mutableStateOf<List<LuizEdsonTodoResponse>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
-            todos = RetrofitClient.service.getMemberATodos().take(5)
+            todos = RetrofitClient.service.getLuizEdsonTodos().take(5)
         }
         loading = false
     }
@@ -207,18 +207,18 @@ fun LuizEdsonApiScreen() {
 fun HolderViniciusWorkspaceScreen() {
     val context = LocalContext.current.applicationContext
     val db = remember { FitTreinoDatabase.getInstance(context) }
-    var meals by remember { mutableStateOf<List<MemberBMealEntity>>(emptyList()) }
+    var meals by remember { mutableStateOf<List<HelderViniciusMealEntity>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
-            val dao = db.memberBMealDao()
+            val dao = db.helderViniciusMealDao()
             if (dao.count() == 0) {
                 dao.insertAll(
                     listOf(
-                        MemberBMealEntity(name = "Salada de Frango", mealType = "Almoço", calories = "420 kcal"),
-                        MemberBMealEntity(name = "Omelete com Vegetais", mealType = "Café da manhã", calories = "310 kcal"),
-                        MemberBMealEntity(name = "Iogurte com Granola", mealType = "Lanche", calories = "260 kcal")
+                        HelderViniciusMealEntity(name = "Salada de Frango", mealType = "Almoço", calories = "420 kcal"),
+                        HelderViniciusMealEntity(name = "Omelete com Vegetais", mealType = "Café da manhã", calories = "310 kcal"),
+                        HelderViniciusMealEntity(name = "Iogurte com Granola", mealType = "Lanche", calories = "260 kcal")
                     )
                 )
             }
@@ -256,12 +256,12 @@ fun HolderViniciusWorkspaceScreen() {
 
 @Composable
 fun HolderViniciusApiScreen() {
-    var posts by remember { mutableStateOf<List<MemberBPostResponse>>(emptyList()) }
+    var posts by remember { mutableStateOf<List<HelderViniciusPostResponse>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
-            posts = RetrofitClient.service.getMemberBPosts().take(5)
+            posts = RetrofitClient.service.getHelderViniciusPosts().take(5)
         }
         loading = false
     }

@@ -10,8 +10,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
-@Entity(tableName = "member_a_workouts")
-data class MemberAWorkoutEntity(
+@Entity(tableName = "luiz_edson_workouts")
+data class LuizEdsonWorkoutEntity(
     @androidx.room.PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val name: String,
@@ -19,8 +19,8 @@ data class MemberAWorkoutEntity(
     val duration: String
 )
 
-@Entity(tableName = "member_b_meals")
-data class MemberBMealEntity(
+@Entity(tableName = "helder_vinicius_meals")
+data class HelderViniciusMealEntity(
     @androidx.room.PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val name: String,
@@ -29,37 +29,37 @@ data class MemberBMealEntity(
 )
 
 @Dao
-interface MemberAWorkoutDao {
-    @Query("SELECT * FROM member_a_workouts ORDER BY id ASC")
-    suspend fun getAll(): List<MemberAWorkoutEntity>
+interface LuizEdsonWorkoutDao {
+    @Query("SELECT * FROM luiz_edson_workouts ORDER BY id ASC")
+    suspend fun getAll(): List<LuizEdsonWorkoutEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(items: List<MemberAWorkoutEntity>)
+    suspend fun insertAll(items: List<LuizEdsonWorkoutEntity>)
 
-    @Query("SELECT COUNT(*) FROM member_a_workouts")
+    @Query("SELECT COUNT(*) FROM luiz_edson_workouts")
     suspend fun count(): Int
 }
 
 @Dao
-interface MemberBMealDao {
-    @Query("SELECT * FROM member_b_meals ORDER BY id ASC")
-    suspend fun getAll(): List<MemberBMealEntity>
+interface HelderViniciusMealDao {
+    @Query("SELECT * FROM helder_vinicius_meals ORDER BY id ASC")
+    suspend fun getAll(): List<HelderViniciusMealEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(items: List<MemberBMealEntity>)
+    suspend fun insertAll(items: List<HelderViniciusMealEntity>)
 
-    @Query("SELECT COUNT(*) FROM member_b_meals")
+    @Query("SELECT COUNT(*) FROM helder_vinicius_meals")
     suspend fun count(): Int
 }
 
 @Database(
-    entities = [MemberAWorkoutEntity::class, MemberBMealEntity::class],
+    entities = [LuizEdsonWorkoutEntity::class, HelderViniciusMealEntity::class],
     version = 1,
     exportSchema = false
 )
 abstract class FitTreinoDatabase : RoomDatabase() {
-    abstract fun memberAWorkoutDao(): MemberAWorkoutDao
-    abstract fun memberBMealDao(): MemberBMealDao
+    abstract fun luizEdsonWorkoutDao(): LuizEdsonWorkoutDao
+    abstract fun helderViniciusMealDao(): HelderViniciusMealDao
 
     companion object {
         @Volatile

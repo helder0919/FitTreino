@@ -6,10 +6,10 @@ Aplicativo Android desenvolvido em Kotlin com Jetpack Compose para atender os re
 
 O projeto apresenta quatro telas principais:
 
-- Membro A — dados locais com Room
-- Membro A — dados externos com Retrofit
-- Membro B — dados locais com Room
-- Membro B — dados externos com Retrofit
+- Luiz Edson — dados locais com Room
+- Luiz Edson — dados externos com Retrofit
+- Hélder Vinícius — dados locais com Room
+- Hélder Vinícius — dados externos com Retrofit
 
 Cada integrante usa sua própria tabela no banco local e um endpoint diferente da API externa.
 
@@ -64,8 +64,8 @@ Foi usada a API pública JSONPlaceholder:
 
 Rotas usadas:
 
-- Membro A: `/todos`
-- Membro B: `/posts`
+- Luiz Edson: `/todos`
+- Hélder Vinícius: `/posts`
 
 ## Observações
 

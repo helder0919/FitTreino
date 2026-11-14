@@ -1,29 +1,19 @@
 package com.example.fittreino.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Api
-import androidx.compose.material.icons.filled.Fastfood
-import androidx.compose.material.icons.filled.FitnessCenter
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -40,26 +30,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fittreino.data.FitTreinoDatabase
-import com.example.fittreino.data.LuizEdsonWorkoutEntity
 import com.example.fittreino.data.HelderViniciusMealEntity
-import com.example.fittreino.data.api.LuizEdsonTodoResponse
+import com.example.fittreino.data.LuizEdsonWorkoutEntity
 import com.example.fittreino.data.api.HelderViniciusPostResponse
+import com.example.fittreino.data.api.LuizEdsonTodoResponse
 import com.example.fittreino.data.api.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-
-sealed class BottomBarRoute(val route: String, val title: String, val icon: ImageVector) {
-    object LuizEdsonWorkspace : BottomBarRoute("luiz_edson_room", "Luiz Edson - Room", Icons.Default.FitnessCenter)
-    object LuizEdsonApi : BottomBarRoute("luiz_edson_api", "Luiz Edson - API", Icons.Default.Api)
-    object HolderViniciusWorkspace : BottomBarRoute("helder_vinicius_room", "Hélder Vinícius - Room", Icons.Default.Fastfood)
-    object HolderViniciusApi : BottomBarRoute("helder_vinicius_api", "Hélder Vinícius - API", Icons.Default.List)
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -96,7 +78,7 @@ fun FitTreinoMainApp() {
                         selected = currentRoute == item,
                         onClick = { currentRoute = item },
                         label = { Text(item.title) },
-                        icon = { Icon(item.icon, contentDescription = item.title) }
+                        icon = { androidx.compose.material3.Icon(item.icon, contentDescription = item.title) }
                     )
                 }
             }
